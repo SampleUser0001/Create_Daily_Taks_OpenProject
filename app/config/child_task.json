@@ -1,0 +1,16 @@
+[
+    {
+        "subject": "Sub task($date$)",
+        "description": {
+            "raw": "Sub task($date$)"
+        },
+        "_links": {
+            "project": {
+                "href": "/api/v3/projects/3"
+            },
+            "type": {
+                "href": "/api/v3/types/1"
+            }
+        }
+    }    
+]

@@ -2,12 +2,12 @@
 from logging import getLogger, config, DEBUG
 import os
 
-# import sys
+import sys
 from logutil import LogUtil
 from importenv import ImportEnvKeyEnum
 
 from util.sample import Util
-from controller import SampleController
+from controller import CreateTaskController
 
 PYTHON_APP_HOME = os.getenv('PYTHON_APP_HOME')
 LOG_CONFIG_FILE = ['config', 'log_config.json']
@@ -18,24 +18,22 @@ config.dictConfig(log_conf)
 logger.setLevel(DEBUG)
 logger.propagate = False
 
-def sample_func():
-    logger.info('hoge')
-    logger.debug('hoge')
-
+def exec():
+    args = sys.argv
+    args_index = 1
+    
+    task_date = args[args_index]; args_index += 1
+    logger.debug(f"task_date: {task_date}")
+    
+    controller = CreateTaskController()
+    controller.create_task(task_date)
+    
 if __name__ == '__main__':
     # 起動引数の取得
     # args = sys.argv
     # args[0]はpythonのファイル名。
     # 実際の引数はargs[1]から。
     
-    logger.info('This is logger message!!')
-    logger.debug('This is logger message!!')
-
-    # .envの取得
-    logger.info(f'ImportEnvKeyEnum.SAMPLE.value : {ImportEnvKeyEnum.SAMPLE.value}')
-
-    sample_func()
-
-    Util.print()
-    
-    SampleController().print_log()
+    logger.info('Daily Task Create Start!!')
+    exec()
+    logger.info('Daily Task Create Finish!!')
