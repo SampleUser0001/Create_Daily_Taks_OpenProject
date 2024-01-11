@@ -77,7 +77,7 @@ class CreateTaskController():
             # 親タスクを紐付ける
             child_task[LINKS][PARENT] = parent
             response = self._call_api(child_task)
-            logger.info(f"child_task: {response}")
+            logger.info(f"child_task: {self._get_task_self(response)}")
             logger.debug(f"child_task: {response}")
 
     def _replace_task_date(self, task: dict, task_date: str) -> dict:
