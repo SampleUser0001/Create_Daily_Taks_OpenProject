@@ -1,0 +1,14 @@
+{
+    "subject": "Daily $date$",
+    "description": {
+        "raw": "Daily $date$"
+    },
+    "_links": {
+        "project": {
+            "href": "/api/v3/projects/3"
+        },
+        "type": {
+            "href": "/api/v3/types/1"
+        }
+    }
+}
